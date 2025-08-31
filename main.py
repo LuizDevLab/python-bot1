@@ -1,10 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import os, time
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.keys import Keys
+import time
 
+service = Service(executable_path="chromedriver.exe")
+driver = webdriver.Chrome(service=service)
 
-driver = webdriver.Chrome()
-driver.get("https://web.whatsapp.com/")
+driver.get("https://google.com")
 
-time.sleep(20)
+input_element = driver.find_element(By.CLASS_NAME, "gLFyf")
+input_element.send_keys("tec with tim" + Keys.ENTER)
+
+time.sleep(10)
+
 driver.quit()
